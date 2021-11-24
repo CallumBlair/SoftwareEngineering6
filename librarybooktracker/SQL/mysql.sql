@@ -3,38 +3,38 @@
 -- Creates the Book table
 CREATE TABLE book_tbl
 (
-	book_id VARCHAR(5),
-	book_title VARCHAR(20), 
-	book_isbn VARCHAR(13), 
-	CONSTRAINT book_tbl_pk PRIMARY KEY (book_id)
+	book_isbn VARCHAR(25),
+	book_title VARCHAR(100), 
+	CONSTRAINT book_tbl_pk PRIMARY KEY (book_isbn)
 );
 -- Creates the Author table
 CREATE TABLE auth_tbl
 (
-	author_id VARCHAR(5),
-	auth_name VARCHAR(20), 
+	author_id int NOT NULL,
+	auth_name VARCHAR(50), 
 	CONSTRAINT auth_tbl_pk PRIMARY KEY (author_id)
 );
 -- Creates the Member table
 CREATE TABLE member_tbl
 (
-	member_id VARCHAR(10),
-	member_name VARCHAR(20), 
-	member_hash VARCHAR(20), 
-	member_postcode VARCHAR(6), 
+	member_id int NOT NULL AUTO_INCREMENT,
+	member_name VARCHAR(50), 
+	member_pw VARCHAR(20), 
+	member_postcode VARCHAR(8), 
 	CONSTRAINT member_tbl_pk PRIMARY KEY (member_id)
 );
+ALTER TABLE member_tbl AUTO_INCREMENT=10000; 
 -- Creates the Active loans table
 CREATE TABLE active_loan_tbl
 (
-	loan_id VARCHAR(5),
-	book_id VARCHAR(5), 
-	member_id VARCHAR(10),
+	loan_id int NOT NULL AUTO_INCREMENT,
+	book_isbn VARCHAR(25),
+	member_id int,
 	creation_date DATE,
 	return_date DATE,
 	returned BOOLEAN,
-	FOREIGN KEY (book_id)
-		REFERENCES book_tbl(book_id),
+	FOREIGN KEY (book_isbn)
+		REFERENCES book_tbl(book_isbn),
 	FOREIGN KEY (member_id)
 		REFERENCES member_tbl(member_id),
 	CONSTRAINT active_loan_tbl_pk PRIMARY KEY (loan_id)
@@ -42,14 +42,14 @@ CREATE TABLE active_loan_tbl
 -- Creates the Past loans table
 CREATE TABLE past_loan_tbl
 (
-	loan_id VARCHAR(5),
-	book_id VARCHAR(5), 
-	member_id VARCHAR(10),
+	loan_id int,
+	book_isbn VARCHAR(25), 
+	member_id int,
 	creation_date DATE,
 	return_date DATE,
 	returned BOOLEAN,
-	FOREIGN KEY (book_id)
-		REFERENCES book_tbl(book_id),
+	FOREIGN KEY (book_isbn)
+		REFERENCES book_tbl(book_isbn),
 	FOREIGN KEY (member_id)
 		REFERENCES member_tbl(member_id),
 	CONSTRAINT past_loan_tbl_pk PRIMARY KEY (loan_id)
@@ -57,24 +57,80 @@ CREATE TABLE past_loan_tbl
 -- Creates the Book Author link table
 CREATE TABLE book_auth_lk
 (
-	fk_book_id VARCHAR(5),
-	fk_auth_id VARCHAR(5),
+	fk_book_id VARCHAR(25),
+	fk_auth_id int,
 	FOREIGN KEY (fk_book_id)
-		REFERENCES book_tbl(book_id),
+		REFERENCES book_tbl(book_isbn),
 	FOREIGN KEY (fk_auth_id)
 		REFERENCES auth_tbl(author_id),
 	CONSTRAINT book_auth_pk PRIMARY KEY (fk_book_id,fk_auth_id)
 );
 
 COMMIT;
--- DROP SCRIPT
 
+-- INSERT SCRIPTS
+
+-- Member INSERT
+INSERT INTO member_tbl(member_name,member_pw,member_postcode) VALUES('Andrew','Password1', 'LN9 6PL');
+INSERT INTO member_tbl(member_name,member_pw,member_postcode) VALUES('Peter','Password2', 'EC3M 7HJ');
+INSERT INTO member_tbl(member_name,member_pw,member_postcode) VALUES('Aiden','Password3', 'DN14 5SN');
+INSERT INTO member_tbl(member_name,member_pw,member_postcode) VALUES('David','Password4', 'PA47 7SR');
+INSERT INTO member_tbl(member_name,member_pw,member_postcode) VALUES('Sarah','Password5', 'B90 4EY');
+INSERT INTO member_tbl(member_name,member_pw,member_postcode) VALUES('Michael','Password6', 'LE14 4AW');
+INSERT INTO member_tbl(member_name,member_pw,member_postcode) VALUES('Isobele','Password7', 'PH35 4HJ');
+
+-- Author INSERT
+INSERT INTO auth_tbl(author_id, auth_name) VALUES('1','Jeremy Clarkson');
+INSERT INTO auth_tbl(author_id, auth_name) VALUES('2','David Walliams');
+INSERT INTO auth_tbl(author_id, auth_name) VALUES('3','Francis Crosby');
+INSERT INTO auth_tbl(author_id, auth_name) VALUES('4','Tiffany Goodall');
+INSERT INTO auth_tbl(author_id, auth_name) VALUES('5','Troy McMillan');
+INSERT INTO auth_tbl(author_id, auth_name) VALUES('6','Quentin Docter');
+INSERT INTO auth_tbl(author_id, auth_name) VALUES('7','Emmett Dulaney');
+INSERT INTO auth_tbl(author_id, auth_name) VALUES('8','Toby Skandier');
+INSERT INTO auth_tbl(author_id, auth_name) VALUES('9','Tim Walker');
+INSERT INTO auth_tbl(author_id, auth_name) VALUES('10','Eoin Colfer');
+INSERT INTO auth_tbl(author_id, auth_name) VALUES('11','Anothony Horowitz');
+INSERT INTO auth_tbl(author_id, auth_name) VALUES('12','Charlie Higson');
+INSERT INTO auth_tbl(author_id, auth_name) VALUES('13','Garth Nix');
+INSERT INTO auth_tbl(author_id, auth_name) VALUES('14','Michael Dawson');
+INSERT INTO auth_tbl(author_id, auth_name) VALUES('15','Enid Blyton');
+INSERT INTO auth_tbl(author_id, auth_name) VALUES('16','Lee Childs');
+INSERT INTO auth_tbl(author_id, auth_name) VALUES('17','Barbra Nadel');
+
+-- Book INSERT
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('The Mystery of the Burnt Cottage','978-1-4052-0393-7');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('Double of Die','9780-4-322032');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('Artemis Fowl and the Lost Colony','0-141-39268-6');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('The flying Fizzler','978-0-571-23301-4');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('Abhorsen','0-00-713735-4');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('The devil and his boy','978-1-4063-0569-2');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('Return to Groosham Grange','978-0-7445-8345-8');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('Public Enemy Number Two','978-1-4063-0681-1');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('The World According to Clarkson Volume 2','978-0-141-02860-6');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('Dont Stop me now','978-0-718-14905-5');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('Python Programming third addition','9781435455009');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('A Noble Killing','978-0-7553-7161-7');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('Killing Floor','9780553826166');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('CompTIA A+','978-1-119-13785-6-55000');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('A handbook of Fighter Aircraft','1-84309-444-4');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('CCNA Security','978-1-119-40993-955000');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('Student CookBook','978-1-78713-015-9');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('Gangsta Granny','978-0-00-737144-0');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('The World According to Clarkson Volume 1','0-141-01789-9');
+
+
+-- Book Auth Lnk Insert
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('Double of Die','9780-4-322032');
+
+COMMIT;
+
+-- DROP SCRIPT
 drop table book_auth_lk;
 drop table active_loan_tbl;
 drop table past_loan_tbl;
 drop table book_tbl;
 drop table auth_tbl;
 drop table member_tbl;
-
 
 COMMIT;
