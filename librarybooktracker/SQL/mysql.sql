@@ -7,6 +7,15 @@ CREATE TABLE book_tbl
 	book_title VARCHAR(100), 
 	CONSTRAINT book_tbl_pk PRIMARY KEY (book_isbn)
 );
+
+-- Creates the Book Instance table
+CREATE TABLE book_instance_tbl
+(
+	book_isbn VARCHAR(25),
+	book_title VARCHAR(100), 
+	CONSTRAINT book_tbl_pk PRIMARY KEY (book_isbn)
+);
+
 -- Creates the Author table
 CREATE TABLE auth_tbl
 (
@@ -24,6 +33,8 @@ CREATE TABLE member_tbl
 	CONSTRAINT member_tbl_pk PRIMARY KEY (member_id)
 );
 ALTER TABLE member_tbl AUTO_INCREMENT=10000; 
+
+
 -- Creates the Active loans table
 CREATE TABLE active_loan_tbl
 (
@@ -111,17 +122,37 @@ INSERT INTO book_tbl(book_title,book_isbn) VALUES('The World According to Clarks
 INSERT INTO book_tbl(book_title,book_isbn) VALUES('Dont Stop me now','978-0-718-14905-5');
 INSERT INTO book_tbl(book_title,book_isbn) VALUES('Python Programming third addition','9781435455009');
 INSERT INTO book_tbl(book_title,book_isbn) VALUES('A Noble Killing','978-0-7553-7161-7');
-INSERT INTO book_tbl(book_title,book_isbn) VALUES('Killing Floor','9780553826166');
-INSERT INTO book_tbl(book_title,book_isbn) VALUES('CompTIA A+','978-1-119-13785-6-55000');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('Killing Floor','978-0-553-82616-6');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('CompTIA A+','978-1-119-13785-6');
 INSERT INTO book_tbl(book_title,book_isbn) VALUES('A handbook of Fighter Aircraft','1-84309-444-4');
-INSERT INTO book_tbl(book_title,book_isbn) VALUES('CCNA Security','978-1-119-40993-955000');
+INSERT INTO book_tbl(book_title,book_isbn) VALUES('CCNA Security','978-1-119-40993-9');
 INSERT INTO book_tbl(book_title,book_isbn) VALUES('Student CookBook','978-1-78713-015-9');
 INSERT INTO book_tbl(book_title,book_isbn) VALUES('Gangsta Granny','978-0-00-737144-0');
 INSERT INTO book_tbl(book_title,book_isbn) VALUES('The World According to Clarkson Volume 1','0-141-01789-9');
 
 
 -- Book Auth Lnk Insert
-INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('Double of Die','9780-4-322032');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('978-1-4052-0393-7','15');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('0-141-01789-9','1');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('978-1-4063-0681-1','11');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('978-0-571-23301-4','9');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('9781435455009','14');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('978-0-00-737144-0','2');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('978-0-718-14905-5','1');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('978-1-78713-015-9','4');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('978-1-119-40993-9','5');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('978-0-7553-7161-7','17');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('1-84309-444-4','3');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('978-0-141-02860-6','1');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('978-0-7445-8345-8','11');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('978-1-4063-0569-2','11');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('9780-4-322032','12');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('0-141-39268-6','10');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('0-00-713735-4','13');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('978-1-119-13785-6','6');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('978-1-119-13785-6','7');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('978-1-119-13785-6','8');
+INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('978-0-553-82616-6','16');
 
 COMMIT;
 

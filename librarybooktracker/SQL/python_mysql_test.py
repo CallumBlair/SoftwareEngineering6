@@ -1,18 +1,22 @@
 import mysql.connector
 
+from sqlcommands import *
+
 mydb = mysql.connector.connect(
     host="s5330191.educationhost.cloud",
-    user="tzjcgffq_admin ",
+    user="tzjcgffq_admin",
     password="Bournemouth1",
     database="tzjcgffq_libraryBookTracker"
 )
-mycursor = mydb.cursor()
 
-mycursor.execute("SELECT auth_name, author_id FROM auth_tbl")
+author = str(input("What Author: "))
+command = findAuthorBooks(author)
 
-myresult = mycursor.fetchall()
+myresult = runCommand(command, mydb)
 
-mycursor.close()
-
-for x in myresult:
-  print(x)
+if(myresult == []):
+  print("Nothing Found for the author: "+ author)
+else:
+  print("Books found:")
+  for x in myresult:
+    print(x[0])
