@@ -9,11 +9,14 @@ CREATE TABLE book_tbl
 );
 
 -- Creates the Book Instance table
-CREATE TABLE book_instance_tbl
+CREATE TABLE instance_tbl
 (
-	book_isbn VARCHAR(25),
-	book_title VARCHAR(100), 
-	CONSTRAINT book_tbl_pk PRIMARY KEY (book_isbn)
+	book_id VARCHAR(25),
+	fk_book_isbn VARCHAR(25),
+	book_status VARCHAR(100),
+	FOREIGN KEY (fk_book_isbn)
+		REFERENCES book_tbl(book_isbn),
+	CONSTRAINT instance_tbl_pk PRIMARY KEY (book_id)
 );
 
 -- Creates the Author table
@@ -23,6 +26,18 @@ CREATE TABLE auth_tbl
 	auth_name VARCHAR(50), 
 	CONSTRAINT auth_tbl_pk PRIMARY KEY (author_id)
 );
+
+-- Creates the Member table
+CREATE TABLE staff_tbl
+(
+	staff_id int NOT NULL AUTO_INCREMENT,
+	staff_name VARCHAR(50), 
+	staff_pw VARCHAR(20), 
+	staff_postcode VARCHAR(8), 
+	CONSTRAINT staff_tbl_pk PRIMARY KEY (staff_id)
+);
+
+
 -- Creates the Member table
 CREATE TABLE member_tbl
 (
@@ -76,6 +91,8 @@ CREATE TABLE book_auth_lk
 		REFERENCES auth_tbl(author_id),
 	CONSTRAINT book_auth_pk PRIMARY KEY (fk_book_id,fk_auth_id)
 );
+
+
 
 COMMIT;
 
