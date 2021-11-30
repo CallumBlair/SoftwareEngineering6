@@ -1,3 +1,20 @@
+"""USAGE:
+author = str(input("What Author: "))
+command = findAuthorBooks(author)
+myresult = runCommand(command, mydb)
+"""
+
+
+
+#runs the specified MySQL command, on the specified database
+def runCommand(command, mydb):
+    mycursor = mydb.cursor()
+    mycursor.execute(command)
+    myresult = mycursor.fetchall()
+    mycursor.close()
+    return myresult
+
+#Returns the books written by a given author
 def findAuthorBooks(author):
     string = str("""
     SELECT b.book_title
@@ -7,9 +24,8 @@ def findAuthorBooks(author):
     AND a.auth_name = '""") + author + "'"
     return string
 
-def runCommand(command, mydb):
-    mycursor = mydb.cursor()
-    mycursor.execute(command)
-    myresult = mycursor.fetchall()
-    mycursor.close()
-    return myresult
+#Returns a specified table
+def viewTable(tableName):
+    string = str("""
+    SELECT * FROM """) + tableName
+    return string

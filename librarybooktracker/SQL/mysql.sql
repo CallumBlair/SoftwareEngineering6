@@ -27,7 +27,7 @@ CREATE TABLE auth_tbl
 	CONSTRAINT auth_tbl_pk PRIMARY KEY (author_id)
 );
 
--- Creates the Member table
+-- Creates the Staff table
 CREATE TABLE staff_tbl
 (
 	staff_id int NOT NULL AUTO_INCREMENT,
@@ -36,7 +36,6 @@ CREATE TABLE staff_tbl
 	staff_postcode VARCHAR(8), 
 	CONSTRAINT staff_tbl_pk PRIMARY KEY (staff_id)
 );
-
 
 -- Creates the Member table
 CREATE TABLE member_tbl
@@ -48,7 +47,6 @@ CREATE TABLE member_tbl
 	CONSTRAINT member_tbl_pk PRIMARY KEY (member_id)
 );
 ALTER TABLE member_tbl AUTO_INCREMENT=10000; 
-
 
 -- Creates the Active loans table
 CREATE TABLE active_loan_tbl
@@ -65,6 +63,7 @@ CREATE TABLE active_loan_tbl
 		REFERENCES member_tbl(member_id),
 	CONSTRAINT active_loan_tbl_pk PRIMARY KEY (loan_id)
 );
+
 -- Creates the Past loans table
 CREATE TABLE past_loan_tbl
 (
@@ -92,11 +91,13 @@ CREATE TABLE book_auth_lk
 	CONSTRAINT book_auth_pk PRIMARY KEY (fk_book_id,fk_auth_id)
 );
 
-
-
 COMMIT;
 
 -- INSERT SCRIPTS
+
+-- Staff INSERT
+INSERT INTO staff_tbl(staff_name,staff_pw,staff_postcode) VALUES('Mr Bennett','Teacher1', 'UB10 0JU');
+INSERT INTO staff_tbl(staff_name,staff_pw,staff_postcode) VALUES('Mr Dalton','Teacher2', 'PO36 9JD');
 
 -- Member INSERT
 INSERT INTO member_tbl(member_name,member_pw,member_postcode) VALUES('Andrew','Password1', 'LN9 6PL');
@@ -147,6 +148,26 @@ INSERT INTO book_tbl(book_title,book_isbn) VALUES('Student CookBook','978-1-7871
 INSERT INTO book_tbl(book_title,book_isbn) VALUES('Gangsta Granny','978-0-00-737144-0');
 INSERT INTO book_tbl(book_title,book_isbn) VALUES('The World According to Clarkson Volume 1','0-141-01789-9');
 
+-- Instance INSERT
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0001','978-1-4052-0393-7','As New');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0002','9780-4-322032','As New');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0003','0-141-39268-6','Worn');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0004','978-0-571-23301-4','As New');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0005','0-00-713735-4','Damaged');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0006','978-1-4063-0569-2','As New');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0007','978-0-7445-8345-8','Worn');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0008','978-1-4063-0681-1','Worn');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0009','978-0-141-02860-6','Worn');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0010','978-0-718-14905-5','Damaged');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0011','9781435455009','As New');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0012','978-0-7553-7161-7','Worn');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0013','978-0-553-82616-6','As New');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0014','978-1-119-13785-6','As New');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0015','1-84309-444-4','Damaged');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0016','978-1-119-40993-9','Worn');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0017','978-0-00-737144-0','As New');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0018','978-1-78713-015-9','Worn');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0019','0-141-01789-9','Worn');
 
 -- Book Auth Lnk Insert
 INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('978-1-4052-0393-7','15');
@@ -177,8 +198,9 @@ COMMIT;
 drop table book_auth_lk;
 drop table active_loan_tbl;
 drop table past_loan_tbl;
+drop table instance_tbl;
 drop table book_tbl;
 drop table auth_tbl;
 drop table member_tbl;
-
+drop table staff_tbl;
 COMMIT;

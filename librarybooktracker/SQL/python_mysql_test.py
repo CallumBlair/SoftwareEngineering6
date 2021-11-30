@@ -1,5 +1,4 @@
 import mysql.connector
-
 from sqlcommands import *
 
 mydb = mysql.connector.connect(
@@ -12,6 +11,7 @@ mydb = mysql.connector.connect(
 author = str(input("What Author: "))
 command = findAuthorBooks(author)
 
+
 myresult = runCommand(command, mydb)
 
 if(myresult == []):
@@ -19,4 +19,4 @@ if(myresult == []):
 else:
   print("Books found:")
   for x in myresult:
-    print(x[0])
+    print(x)
