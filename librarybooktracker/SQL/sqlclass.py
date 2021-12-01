@@ -34,10 +34,13 @@ class mydb():
         
     #runs the specified MySQL command
     def runCommand(self,command):
-        mycursor = self.mydb.cursor()
-        mycursor.execute(command)
-        myresult = mycursor.fetchall()
-        mycursor.close()
+        try:
+            mycursor = self.mydb.cursor()
+            mycursor.execute(command)
+            myresult = mycursor.fetchall()
+            mycursor.close()
+        except:
+            myresult = "Generic Error Message"
         return myresult
     
     def commit(self):
@@ -206,4 +209,7 @@ class mydb():
         string = """INSERT INTO active_loan_tbl(book_id,member_id,creation_date,return_date,returned) VALUES ('""" + str(book_id) + """', '""" + str(member_id) + """', '""" + str(creation_date) + """',' """ + str(return_date) + """',""" + str(returned) + ")"
         result = self.runCommand(string)
         self.commit()
-        return string
+        return result
+
+    def returnLoan(self, loan_id):
+        

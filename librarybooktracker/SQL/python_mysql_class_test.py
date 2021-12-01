@@ -10,3 +10,4 @@ def display(myresult):
 database = mydb()
 #display(database.viewTable("active_loan_tbl")
 print(database.createLoan("0001", "10001"))
+display(database.viewTable("active_loan_tbl"))
