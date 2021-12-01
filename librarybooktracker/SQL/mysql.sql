@@ -203,4 +203,5 @@ drop table book_tbl;
 drop table auth_tbl;
 drop table member_tbl;
 drop table staff_tbl;
+
 COMMIT;
