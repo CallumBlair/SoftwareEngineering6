@@ -168,6 +168,11 @@ INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0016','978-1-
 INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0017','978-0-00-737144-0','As New');
 INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0018','978-1-78713-015-9','Worn');
 INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0019','0-141-01789-9','Worn');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0020','0-141-01789-9','As New');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0021','978-0-571-23301-4','Damaged');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0022','978-1-4052-0393-7','Worn');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0023','978-0-571-23301-4','Worn');
+INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('0024','978-1-119-13785-6','Damaged');
 
 -- Book Auth Lnk Insert
 INSERT INTO book_auth_lk(fk_book_id,fk_auth_id) VALUES('978-1-4052-0393-7','15');
