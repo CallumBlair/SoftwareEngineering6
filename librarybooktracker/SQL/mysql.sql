@@ -52,7 +52,7 @@ ALTER TABLE member_tbl AUTO_INCREMENT=10000;
 CREATE TABLE active_loan_tbl
 (
 	loan_id int NOT NULL AUTO_INCREMENT,
-	book_id VARCHAR(25),
+	book_id VARCHAR(25) UNIQUE,
 	member_id int,
 	creation_date DATE,
 	return_date DATE,
@@ -68,7 +68,7 @@ CREATE TABLE active_loan_tbl
 CREATE TABLE past_loan_tbl
 (
 	loan_id int,
-	book_id VARCHAR(25), 
+	book_id VARCHAR(25) UNIQUE, 
 	member_id int,
 	creation_date DATE,
 	return_date DATE,

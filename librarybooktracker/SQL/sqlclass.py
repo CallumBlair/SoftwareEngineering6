@@ -7,6 +7,9 @@ myresult = database.runCommand(command)
 from secrets import *
 import mysql.connector
 #from mysql import connector as mysql
+import datetime
+
+
 class mydb():
     
     #Initialises class instance with imported values if non given
@@ -39,6 +42,10 @@ class mydb():
     
     def commit(self):
         self.runCommand("COMMIT;")
+
+    def currentDate(self):
+        x = datetime.datetime.now()
+        return x.strftime("%Y-%m-%d")
 ###@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     ###Query Functions
     
@@ -190,5 +197,13 @@ class mydb():
 
 ###@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     ###Loans
-
-
+        
+    def createLoan(self, book_id, member_id, creation_date = None, loanPeriod = 14, returned = False):
+        if creation_date == None:
+            creation_date = self.currentDate()
+        return_date = datetime.datetime.strptime(creation_date,"%Y-%m-%d")
+        return_date = (return_date + datetime.timedelta(days=loanPeriod)).strftime("%Y-%m-%d")
+        string = """INSERT INTO active_loan_tbl(book_id,member_id,creation_date,return_date,returned) VALUES ('""" + str(book_id) + """', '""" + str(member_id) + """', '""" + str(creation_date) + """',' """ + str(return_date) + """',""" + str(returned) + ")"
+        result = self.runCommand(string)
+        self.commit()
+        return string
