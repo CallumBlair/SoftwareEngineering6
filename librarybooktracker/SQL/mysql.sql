@@ -52,13 +52,13 @@ ALTER TABLE member_tbl AUTO_INCREMENT=10000;
 CREATE TABLE active_loan_tbl
 (
 	loan_id int NOT NULL AUTO_INCREMENT,
-	book_isbn VARCHAR(25),
+	book_id VARCHAR(25),
 	member_id int,
 	creation_date DATE,
 	return_date DATE,
 	returned BOOLEAN,
-	FOREIGN KEY (book_isbn)
-		REFERENCES book_tbl(book_isbn),
+	FOREIGN KEY (book_id)
+		REFERENCES instance_tbl(book_id),
 	FOREIGN KEY (member_id)
 		REFERENCES member_tbl(member_id),
 	CONSTRAINT active_loan_tbl_pk PRIMARY KEY (loan_id)
@@ -68,13 +68,13 @@ CREATE TABLE active_loan_tbl
 CREATE TABLE past_loan_tbl
 (
 	loan_id int,
-	book_isbn VARCHAR(25), 
+	book_id VARCHAR(25), 
 	member_id int,
 	creation_date DATE,
 	return_date DATE,
 	returned BOOLEAN,
-	FOREIGN KEY (book_isbn)
-		REFERENCES book_tbl(book_isbn),
+	FOREIGN KEY (book_id)
+		REFERENCES instance_tbl(book_id),
 	FOREIGN KEY (member_id)
 		REFERENCES member_tbl(member_id),
 	CONSTRAINT past_loan_tbl_pk PRIMARY KEY (loan_id)
