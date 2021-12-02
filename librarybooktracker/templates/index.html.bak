@@ -5,5 +5,12 @@
 	<h1>Library Book Tracker</h1>
 </head>
 <body>
+	<h2>Home</h2>
+		<a href="NewMember.html">New Member</a>
+		<a href="NewBook.html">New Book</a>
+		<a href="NewUser.html">New User</a>
+		<a href="ManualInput.html">Manual Input</a>
+		<a href="DataSearch.html">Data Search</a>
+		<a href="RemoveEntry.html">RemoveEntry</a>
 </body>
 </html>

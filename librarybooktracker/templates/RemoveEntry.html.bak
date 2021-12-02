@@ -5,9 +5,7 @@
 	<h1>Library Book Tracker</h1>
 </head>
 <body>
-	<h2 id="pageTitle">New Book</h2>
-	<div id="NewBook">
-	</div>
+	<h2 id="pageTitle">Remove Entry</h2>
 	<a href="index.html"><h2 id="return">Return</h2></a>
 </body>
 </html>
