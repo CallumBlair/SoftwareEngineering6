@@ -67,16 +67,12 @@ CREATE TABLE active_loan_tbl
 -- Creates the Past loans table
 CREATE TABLE past_loan_tbl
 (
-	loan_id int,
-	book_id VARCHAR(25) UNIQUE, 
+	loan_id int UNIQUE,
+	book_id VARCHAR(25) , 
 	member_id int,
 	creation_date DATE,
 	return_date DATE,
 	returned BOOLEAN,
-	FOREIGN KEY (book_id)
-		REFERENCES instance_tbl(book_id),
-	FOREIGN KEY (member_id)
-		REFERENCES member_tbl(member_id),
 	CONSTRAINT past_loan_tbl_pk PRIMARY KEY (loan_id)
 );
 -- Creates the Book Author link table

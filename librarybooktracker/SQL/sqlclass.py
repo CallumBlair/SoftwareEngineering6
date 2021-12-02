@@ -34,6 +34,10 @@ class mydb():
         
     #runs the specified MySQL command
     def runCommand(self,command):
+##        mycursor = self.mydb.cursor()
+##        mycursor.execute(command)
+##        myresult = mycursor.fetchall()
+##        mycursor.close()
         try:
             mycursor = self.mydb.cursor()
             mycursor.execute(command)
@@ -212,4 +216,11 @@ class mydb():
         return result
 
     def returnLoan(self, loan_id):
-        
+        string = """UPDATE active_loan_tbl SET returned = true WHERE loan_id = '""" + str(loan_id) + """';"""
+        result = self.runCommand(string)
+        string = """INSERT INTO past_loan_tbl (loan_id, book_id,member_id, creation_date, return_date, returned) SELECT loan_id, book_id,member_id, creation_date, return_date, returned FROM active_loan_tbl WHERE loan_id = '""" + str(loan_id) + """';"""
+        result = self.runCommand(string)
+        string = """DELETE FROM active_loan_tbl WHERE loan_id = '""" + str(loan_id) + """';"""
+        result = self.runCommand(string)
+        self.commit()
+        return result
