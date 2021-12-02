@@ -1,7 +1,6 @@
 """USAGE:
 database = mydb()
-command = database.findAuthorBooks("Enid Blyton")
-myresult = database.runCommand(command)
+database.viewTable("active_loan_tbl")
 """
 
 from secrets import *
@@ -47,9 +46,11 @@ class mydb():
             myresult = "Generic Error Message"
         return myresult
     
+    #Commits changes
     def commit(self):
         self.runCommand("COMMIT;")
 
+    #Returns the current date
     def currentDate(self):
         x = datetime.datetime.now()
         return x.strftime("%Y-%m-%d")
@@ -117,31 +118,35 @@ class mydb():
 ###@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     ###Creation/Deletion Functions
 
+    #Creates a new member of staff
     def addStaff(self, name, pw, postcode):
         string = str("""
         INSERT INTO staff_tbl(staff_name,staff_pw,staff_postcode) VALUES('""") + name + """','""" + pw + """', '""" + postcode + """');"""
         result = self.runCommand(string)
         self.commit()
-
+        
+    #Deletes a member of staff
     def deleteStaff(self, staff_id):
         string = str("""
         DELETE FROM staff_tbl WHERE staff_id =""") + str(staff_id)
         result = self.runCommand(string)
         self.commit()
 
-
+    #Creates a new member
     def addMember(self, name, pw, postcode):
         string = str("""
         INSERT INTO member_tbl(member_name,member_pw,member_postcode) VALUES('""") + name + """','""" + pw + """', '""" + postcode + """');"""
         result = self.runCommand(string)
         self.commit()
 
+    #Deletes a member
     def deleteMember(self, member_id):
         string = str("""
         DELETE FROM member_tbl WHERE member_id =""") + str(member_id)
         result = self.runCommand(string)
         self.commit()
 
+    #Creates a new author with a new ID
     def addAuth(self, name):
         string = "SELECT author_id FROM auth_tbl"
         result = self.runCommand(string)
@@ -155,19 +160,23 @@ class mydb():
         result = self.runCommand(string)
         self.commit()
 
+    #Deletes an Author, REMOVE ALL LINKS PRIOR TO AUTHOR DELETION
     def deleteAuth(self, auth_id):
         string = str("""
         DELETE FROM auth_tbl WHERE author_id =""") + str(auth_id)
         result = self.runCommand(string)
         self.commit()
 
+    #Gets the Author Id from the author name
     def getAuthId(self, auth_name):
         string = """SELECT author_id FROM auth_tbl WHERE auth_name = '""" + auth_name + """'"""
         print(string)
         result = self.runCommand(string)
         result = result[0][0]
         return int(result)
-
+    
+    ############ NEEDS MULTI AUTHOR SUPPORT ############
+    #Creates a new book in the Book table and links it to an author 
     def addBook(self, bookTitle, bookIsbn, authName):
         auth_id = self.getAuthId(authName)
         string = """INSERT INTO book_tbl(book_title,book_isbn) VALUES('""" + bookTitle + """','""" + str(bookIsbn) + """');"""
@@ -176,6 +185,7 @@ class mydb():
         result = self.runCommand(string)
         self.commit()
 
+    #Removes a book from the book table
     def deleteBook(self, book_isbn):
         string = str("""DELETE FROM book_auth_lk WHERE fk_book_id = '""") + str(book_isbn) + """'"""
         print(string)
@@ -184,7 +194,8 @@ class mydb():
         print(string)
         result = self.runCommand(string)
         self.commit()
-
+        
+    #Creates an instance of a book with a new ID
     def addInstance(self, book_isbn, book_status):
         string = "SELECT book_id FROM instance_tbl"
         result = self.runCommand(string)
@@ -196,7 +207,8 @@ class mydb():
         string = """INSERT INTO instance_tbl(book_id,fk_book_isbn,book_status) VALUES('""" + new_id + """','""" + book_isbn + """','""" + book_status + """');"""
         result = self.runCommand(string)
         self.commit()
-
+        
+    #Deletes an instance of a book
     def deleteInstance(self,book_id):
         string = """DELETE FROM instance_tbl WHERE book_id = '""" + str(book_id) + """'"""
         result = self.runCommand(string)
@@ -204,7 +216,8 @@ class mydb():
 
 ###@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     ###Loans
-        
+
+    #Creates a new loan in the Active Loan Table  
     def createLoan(self, book_id, member_id, creation_date = None, loanPeriod = 14, returned = False):
         if creation_date == None:
             creation_date = self.currentDate()
@@ -214,7 +227,8 @@ class mydb():
         result = self.runCommand(string)
         self.commit()
         return result
-
+    
+    #Sets the loan to returned and transfers it to the Past Loans table
     def returnLoan(self, loan_id):
         string = """UPDATE active_loan_tbl SET returned = true WHERE loan_id = '""" + str(loan_id) + """';"""
         result = self.runCommand(string)
