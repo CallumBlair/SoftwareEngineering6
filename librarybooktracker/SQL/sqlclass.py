@@ -3,7 +3,7 @@ database = mydb()
 database.viewTable("active_loan_tbl")
 """
 
-from secrets import *
+from SQL.secrets import *
 import mysql.connector
 #from mysql import connector as mysql
 import datetime
