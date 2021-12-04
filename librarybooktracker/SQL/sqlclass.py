@@ -250,3 +250,39 @@ class mydb():
         result = self.runCommand(string)
         self.commit()
         return result
+
+    #Returns a past loan from a loan id
+    def getPastLoan(self, loan_id):
+        string = """SELECT * FROM past_loan_tbl WHERE loan_id = '""" + str(loan_id) + """';"""
+        result = self.runCommand(string)
+        return result
+
+    #Returns all past loans associated with a specific book
+    def getBookPastLoan(self, book_id):
+        string = """SELECT * FROM past_loan_tbl WHERE book_id = '""" + str(book_id) + """';"""
+        result = self.runCommand(string)
+        return result
+
+    #Returns a past loan from a member id
+    def getMemberPastLoan(self, member_id):
+        string = """SELECT * FROM past_loan_tbl WHERE member_id = '""" + str(member_id) + """';"""
+        result = self.runCommand(string)
+        return result
+
+    #Returns an active loan from a loan id
+    def getActiveLoan(self, loan_id):
+        string = """SELECT * FROM active_loan_tbl WHERE loan_id = '""" + str(loan_id) + """';"""
+        result = self.runCommand(string)
+        return result
+
+    #Returns an active loan associated with a book id
+    def getBookActiveLoan(self, book_id):
+        string = """SELECT * FROM active_loan_tbl WHERE book_id = '""" + str(book_id) + """';"""
+        result = self.runCommand(string)
+        return result
+
+    #Returns an active loan from a member id
+    def getMemberActiveLoan(self, member_id):
+        string = """SELECT * FROM active_loan_tbl WHERE member_id = '""" + str(member_id) + """';"""
+        result = self.runCommand(string)
+        return result
