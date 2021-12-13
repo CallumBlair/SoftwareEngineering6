@@ -1,0 +1,27 @@
+body {  
+	background-color: #c5d5cb;
+	font-family: Montserrat;
+	text-align: center;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+	border: 1px solid;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: #ffffff;
+}
+
+a:hover {
+	background-color: #c5c3c3;
+}
+
+h1 {
+	font-size: 125px;
+}
+
+h2 {
+	font-size: 50px;
+}
+
