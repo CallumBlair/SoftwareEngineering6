@@ -5,6 +5,11 @@
 """
 
 from flask import Flask, render_template
+from SQL.sqlclass import *
+
+database = mbdb()
+
+
 app = Flask(__name__)
 
 @app.route("/")
