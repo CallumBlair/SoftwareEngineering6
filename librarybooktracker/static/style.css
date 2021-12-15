@@ -25,3 +25,32 @@ h2 {
 	font-size: 50px;
 }
 
+#UserLogIn {
+	color: black;
+	text-decoration: none;
+	border: 1px solid;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: #ffffff;
+}
+
+#PassLogIn {
+	color: black;
+	text-decoration: none;
+	border: 1px solid;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: #ffffff;
+	margin-bottom: 10px;
+}
+
+#logIn {
+	color: black;
+	text-decoration: none;
+	border: 1px solid;
+	padding: 100px;
+	border-radius: 10px;
+	background-color: #9fbcff;
+	margin-left: 750px;
+	margin-right: 750px;
+}
