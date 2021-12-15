@@ -1,16 +1,20 @@
-//JavaScript for HTML in templates folder
+//JavaScript for data-search.html in templates folder
 
-document.getElementById("MemberButton").addEventListener("click", NewMemFunc)
+document.getElementById("SearchButton").addEventListener("click", DataSearch)
 
-function NewMemFunc() {
-	let name = document.getElementById("Member").value;
-	let info = "/api/newmember?name=" + name;
-	apiNewMem(info); //starts a function to send information to flask
+function DataSearch() {
+	let bookid = document.getElementById("BookID").value;
+	let memberid = document.getElementById("MemberID").value;
+	let loanid = document.getElementById("LoanID").value;
+	let userid = document.getElementById("UserID").value;
+	let info = "/api/datasearch?bookid=" + bookid + "&memberid=" + memberid + "&loanid=" + loanid + "&userid=" + userid;
+	apiDataSearch(info); //starts a function to send information to flask
 	
-	console.log(name); //For testing purposes, delete later
+	console.log(bookid + " " + memberid + " " + loanid + " " + userid); //For testing purposes, delete later
+	console.log(info) //For testing purposes, delete later
 }
 
-function apiNewMem(info) {
+function apiDataSearch(info) {
 	let flask = new XMLHttpRequest();
 	
 	flask.open("GET", info, true);
