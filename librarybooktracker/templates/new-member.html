@@ -6,15 +6,23 @@
 	<h1>Library Book Tracker</h1>
 </head>
 <body>
-	<h2 id="pageTitle">New Member</h2>
-	<div id="NewMem">
-		<label for="Member">Member Name:</label>
-		<input type="text" id="Member"><br><br>
-		<button type="button" id="MemberButton">Add</button>
+	<h2 id="pageTitle">New Staff Member</h2>
+	<div id="NewUser">
+		<label for="memberFName">First Name:</label>
+		<input type="text" id="memberFName"><br><br>
+		<label for="memberLName">Last Name:</label>
+		<input type="text" id="memberLName"><br><br>
+		<label for="memberPassword">User Password:</label>
+		<input type="password" id="memberPassword"><br><br>
+		<label for="Username">Postcode:</label>
+		<input type="text" id="postcode"><br><br>
+		<button type="button" id="memberButton">Add</button>
 	</div>
 	<a href="/index" id="return">Return</a>
 	
-<script src="../JS/newmember-JS.js"></script>
-	
+<script src="static/scripts/app.js"></script>
+
+<!--event handlers-->
+<script type="text/javascript">document.getElementById("memberButton").addEventListener("click", NewMemberFunc);</script>	
 </body>
 </html>

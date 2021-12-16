@@ -9,29 +9,24 @@
 	<h2 id="pageTitle">Data Search</h2>
 	<div id="Data">
 	<label for="BookID">Book ID:</label>
-	<input type="text" id="BookID"><br><br>
-	<label for="MemberID">Member ID:</label>
-	<input type="text" id="MemberID"><br><br>
-	<label for="LoanID">Loan ID:</label>
-	<input type="text" id="LoanID"><br><br>
-	<label for="UserID">User ID:</label>
-	<input type="text" id="UserID"><br><br>
+	<input type="text" id="bookID" style="width: 35%;"><br><br>
+	<button type="button" id="bookSearch">Search</button><br><br>
+
+	<label for="Author">Author Name:</label>
+	<input type="text" id="authName" style="width: 35%;"><br><br>
+	<button type="button" id="authSearch">Search</button>
+
+
 	</div>
-	<div id="Search">
-	<button type="button" id="SearchButton">Search</button>
-	</div>
-	<div id="Tables">
-		<table>
-			<tr>
-				<th>header</th>
-				<th>header</th>
-				<th>header</th>
-			</tr>
-		</table>
-	</div>
+
+
 	<a href="/index" id="return">Return</a>
 	
-<script src="../JS/data-search-JS.js"></script>
-	
+<script src="static/scripts/app.js"></script>
+
+<!--event handlers-->
+<script type="text/javascript">document.getElementById("bookSearch").addEventListener("click", bookSearchFunc);</script>
+<script type="text/javascript">document.getElementById("authSearch").addEventListener("click", authSearchFunc);</script>
+
 </body>
 </html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../static/style.css">
+    <title>Software Engineering Assignment</title>
+	<h1>Library Book Tracker</h1>
+</head>
+<body>
+	<h2 id="pageTitle">Create Loan</h2>
+	<div id="createLoan">
+	<label for="loanBookID">Book ID:</label>
+	<input type="text" id="loanBookID"><br><br>
+	<label for="loanMemberID">Member ID:</label>
+	<input type="text" id="memberID"><br><br>
+	<label for="loanLength">Loan Length:</label>
+	<input type="text" id="loanLength"><br><br>
+	<button type="button" id="createLoanButton">Create Loan</button>
+	</div>
+
+
+	<h2 id="pageTitle">Return Loan</h2>
+	<div id="returnLoan">
+	<label for="loanID">Loan ID:</label>
+	<input type="text" id="loanID"><br><br>
+	<button type="button" id="returnLoanButton">Return Loan</button>
+	</div>
+	
+	<a href="/index" id="return">Return</a>
+
+<script src="static/scripts/app.js"></script>
+
+<!--event handlers-->
+<script type="text/javascript">document.getElementById("createLoanButton").addEventListener("click", createLoanFunc);</script>
+<script type="text/javascript">document.getElementById("returnLoanButton").addEventListener("click", returnLoanFunc);</script>
+
+</body>
+</html>

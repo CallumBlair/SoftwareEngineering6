@@ -115,7 +115,7 @@ INSERT INTO auth_tbl(author_id, auth_name) VALUES('7','Emmett Dulaney');
 INSERT INTO auth_tbl(author_id, auth_name) VALUES('8','Toby Skandier');
 INSERT INTO auth_tbl(author_id, auth_name) VALUES('9','Tim Walker');
 INSERT INTO auth_tbl(author_id, auth_name) VALUES('10','Eoin Colfer');
-INSERT INTO auth_tbl(author_id, auth_name) VALUES('11','Anothony Horowitz');
+INSERT INTO auth_tbl(author_id, auth_name) VALUES('11','Anthony Horowitz');
 INSERT INTO auth_tbl(author_id, auth_name) VALUES('12','Charlie Higson');
 INSERT INTO auth_tbl(author_id, auth_name) VALUES('13','Garth Nix');
 INSERT INTO auth_tbl(author_id, auth_name) VALUES('14','Michael Dawson');

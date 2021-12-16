@@ -109,6 +109,17 @@ class mydb():
         return result
 
 
+    #Book Title from instance ID
+    def bookTitle(self,bookId):
+        string = str("""
+        SELECT b.book_title 
+        FROM book_tbl b, instance_tbl i
+        WHERE i.book_id = """ + bookId + """
+        AND b.book_isbn = i.fk_book_isbn;
+        """)
+        result = self.runCommand(string)
+        return result
+
     #Template
     def template(self):
         string = str("""
