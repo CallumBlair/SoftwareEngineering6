@@ -22,6 +22,7 @@ def index():
 def newMember():
     return render_template("new-member.html")
 
+
 @app.route("/new-book")
 def newBook():
     return render_template("new-book.html")
