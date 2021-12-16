@@ -14,16 +14,34 @@ from SQL.sqlclass import *
 app = Flask(__name__)
 
 @app.route("/")
+@app.route("/index")
 def index():
     return render_template("index.html")
 
-@app.route("/datasearch")
-def dataSearchView():
-    return render_template("DataSearch.html")
+@app.route("/new-member")
+def newMember():
+    return render_template("new-member.html")
 
-@app.route("/manualinput")
-def manualInputView():
-    return render_template("ManualInput.html")
+@app.route("/new-book")
+def newBook():
+    return render_template("new-book.html")
+
+@app.route("/new-user")
+def newUser():
+    return render_template("new-user.html")
+
+@app.route("/manual-input")
+def manualInput():
+    return render_template("manual-input.html")
+
+@app.route("/data-search")
+def dataSearch():
+    return render_template("data-search.html")
+
+@app.route("/remove-entry")
+def removeEntry():
+    return render_template("remove-entry.html")
+
 
 if __name__ == '__main__':
     app.run()
