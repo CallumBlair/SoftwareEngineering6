@@ -41,7 +41,7 @@ def newMemberAPI():
     name = fName + " " + sName
 
     #Create new staff member
-    ###########value = database.addStaff(name, pw, postcode)
+    value = database.addStaff(name, pw, postcode)
     
     #Create JSON Response
     response = make_response(
@@ -66,7 +66,7 @@ def newbookAPI():
     author = request.args.get("author")
     isbn = request.args.get("isbn")
 
-    #######value = database.addBook(title,isbn,author)
+    value = database.addBook(title,isbn,author)
 
     #Create JSON Response
     response = make_response(
@@ -93,7 +93,7 @@ def newUserAPI():
     postcode = request.args.get("username")
     name = fName + " " + sName
     
-    #########value = database.addUser(name, pw, postcode)
+    value = database.addUser(name, pw, postcode)
     
 
     #Create JSON Response
@@ -119,7 +119,7 @@ def createLoanAPI():
     memberID = request.args.get("memberID")
     loanLength = request.args.get("loanLength")
 
-    ########value = database.createLoan(loanBookID, memberID, None, loanLength)
+    value = database.createLoan(loanBookID, memberID, None, loanLength)
     
 
     #Create JSON Response
@@ -138,7 +138,7 @@ def returnLoanAPI():
     #Retrieve Variables from the GET request
     loanID = request.args.get("loanID")
 
-    #######value = database.returnLoan(loanID)
+    value = database.returnLoan(loanID)
     
 
     #Create JSON Response
