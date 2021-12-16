@@ -13,14 +13,16 @@
 		<label for="UserLName">Last Name:</label>
 		<input type="text" id="UserLName"><br><br>
 		<label for="UserPassword">User Password:</label>
-		<input type="text" id="UserPassword"><br><br>
-		<label for="Username">Username:</label>
+		<input type="password" id="UserPassword"><br><br>
+		<label for="Username">Postcode:</label>
 		<input type="text" id="Username"><br><br>
 		<button type="button" id="UserButton">Add</button>
 	</div>
-	<a href="index.html" id="return">Return</a>
+	<a href="/index" id="return">Return</a>
 	
-<script src="../JS/BookTracker.js"></script>
-	
+<script src="static/scripts/app.js"></script>
+
+<!--event handlers-->
+<script type="text/javascript">document.getElementById("UserButton").addEventListener("click", NewUserFunc);</script>
 </body>
 </html>
