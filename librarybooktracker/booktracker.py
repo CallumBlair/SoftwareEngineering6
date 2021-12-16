@@ -93,7 +93,7 @@ def newUserAPI():
     postcode = request.args.get("username")
     name = fName + " " + sName
     
-    value = database.addUser(name, pw, postcode)
+    value = database.addMember(name, pw, postcode)
     
 
     #Create JSON Response
