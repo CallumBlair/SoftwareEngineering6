@@ -7,13 +7,17 @@
 </head>
 <body>
 	<h2 id="pageTitle">Log In</h2>
-	<div id="logIn">
-		<label for="Username" id="UserLogIn">Username:</label>
-		<input type="text" id="Username"><br><br>
-		<label for="Password" id="PassLogIn">Password:</label>
-		<input type="password" id="Password"><br><br>
-		<button type="button" id="LogInButton">Log In</button>
-	</div>
+
+	<form action="{{ url_for('login') }}" method="post">
+		<label for="Username">
+			<i class="fas fa-user"></i>
+		</label>
+		<input type="text" name="username" placeholder="Username" id="UserLogIn" required>
+		<label for="Password">
+			<i class="fas fa-lock"></i>
+		</label>
+		<input type="password" name="password" placeholder="Password" id="PassLogIn" required>
+		<input type="submit" value="LogInButton">
 
 <script src="../JS/BookTracker.js"></script>
 
