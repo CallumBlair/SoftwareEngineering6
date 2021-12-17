@@ -117,10 +117,9 @@ def createLoanAPI():
     #Retrieve Variables from the GET request
     loanBookID = request.args.get("loanBookID")
     memberID = request.args.get("memberID")
-    loanLength = request.args.get("loanLength")
+    loanLength = int(request.args.get("loanLength"))
 
     value = database.createLoan(loanBookID, memberID, None, loanLength)
-    
 
     #Create JSON Response
     response = make_response(
